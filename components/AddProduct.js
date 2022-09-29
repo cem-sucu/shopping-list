@@ -7,6 +7,11 @@ export const AddProduct = ({ submitHandler }) => {
         setProduct(val);
     };
 
+    const handleClick = () => {
+        submitHandler(product);
+        setProduct(""); // cela permet de vider le input une fois le texte saisi validé
+    };
+
     return (
         <View style={styles.inputContainer}>
             <TextInput
@@ -15,10 +20,7 @@ export const AddProduct = ({ submitHandler }) => {
                 onChangeText={inputHandler}
                 value={product}
             />
-            <Button
-                title="valider"
-                onPress={() => submitHandler(product, setProduct)}
-            />
+            <Button title="valider" onPress={handleClick} />
         </View>
     );
 };

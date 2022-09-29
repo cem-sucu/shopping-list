@@ -13,13 +13,12 @@ import { AddProduct } from "./components/AddProduct";
 export default function App() {
     const [myProducts, setMyProducts] = useState([]);
 
-    const submitHandler = (product, setProduct) => {
+    const submitHandler = (product) => {
         const idString = Date.now().toString();
         setMyProducts((currentMyProduct) => [
             { key: idString, name: product },
             ...currentMyProduct,
         ]);
-        setProduct(""); // cela permet de vider le input une fois le texte saisi validé
     };
     return (
         // view de l'input créé dans le components Addproduct
