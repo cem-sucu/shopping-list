@@ -7,6 +7,7 @@ import {
     Button,
     FlatList,
 } from "react-native";
+import { Products } from "./components/Products";
 
 export default function App() {
     const [product, setProduct] = useState("");
@@ -40,9 +41,7 @@ export default function App() {
             {/* view des items validé et affiché */}
             <FlatList
                 data={myProducts}
-                renderItem={({ item }) => (
-                    <Text style={styles.element}>{item.name}</Text>
-                )}
+                renderItem={({ item }) => <Products name={item.name} />}
             />
         </View>
     );
@@ -58,13 +57,5 @@ const styles = StyleSheet.create({
         paddingLeft: 9,
         fontSize: 18,
         flexGrow: 1,
-    },
-    items: { marginTop: 10 },
-    element: {
-        backgroundColor: "#87cefa",
-        borderRadius: 5,
-        padding: 20,
-        fontSize: 17,
-        marginVertical: 6,
     },
 });
