@@ -10,7 +10,7 @@ export const Products = ({ name }) => {
 };
 
 const styles = StyleSheet.create({
-    items: { marginTop: 10, marginBottom:10 },
+    items: { marginTop: 10, marginBottom: 10 },
     element: {
         backgroundColor: "#87cefa",
         borderRadius: 5,
