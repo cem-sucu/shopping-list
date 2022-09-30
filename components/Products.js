@@ -1,18 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 export const Products = ({ name }) => {
     return (
-        <TouchableHighlight
-            style={{ backgroundColor: "cyan" }}
-            onPress={() => console.log("supprimé")}
-            activeOpacity={0.8} // gere la couleur du toucher lorsque l'on appuie sur le l'élèment
-            underlayColor="darkblue" // permet de changer la couleur au moment du press sur l'élèment
+        <Pressable
+        onPress={() => console.log("supprimé produit")}
+        style={({pressed}) => [{ backgroundColor: pressed ? "cyan" : "lightblue" }]}
         >
             <View style={styles.items}>
                 <Text style={styles.element}>{name}</Text>
             </View>
-        </TouchableHighlight>
+        </Pressable>
     );
 };
 
