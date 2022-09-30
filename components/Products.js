@@ -1,13 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 export const Products = ({ name }) => {
     return (
-        <TouchableWithoutFeedback onPress={() => console.log("supprimé")}>
+        <TouchableOpacity
+            style={{ backgroundColor: "cyan" }}
+            onPress={() => console.log("supprimé")}
+            activeOpacity={0.8} // gere la couleur du toucher lorsque l'on appuie sur le l'élèment
+        >
             <View style={styles.items} onPress={() => console.log("supprimé")}>
                 <Text style={styles.element}>{name}</Text>
             </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     );
 };
 
