@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    Button,
-    FlatList,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
 
@@ -14,11 +7,15 @@ export default function App() {
     const [myProducts, setMyProducts] = useState([]);
 
     const submitHandler = (product) => {
-        const idString = Date.now().toString();
-        setMyProducts((currentMyProduct) => [
-            { key: idString, name: product },
-            ...currentMyProduct,
-        ]);
+        if (product.length > 1) {
+            const idString = Date.now().toString();
+            setMyProducts((currentMyProduct) => [
+                { key: idString, name: product },
+                ...currentMyProduct,
+            ]);
+        } else {
+            alert("veuillez remplir le champs avant de valider");
+        }
     };
 
     const deleteProduct = (key) => {
