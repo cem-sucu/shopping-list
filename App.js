@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
 
@@ -14,7 +14,31 @@ export default function App() {
                 ...currentMyProduct,
             ]);
         } else {
-            alert("veuillez remplir le champs avant de valider");
+            Alert.alert(
+                "Désolé",
+                "veuillez remplir le champ avant de valider",
+                [
+                    {
+                        text: "compris",
+                        onPress: () => console.warn("refusé"),
+                        style: "destructrive",
+                    },
+                    {
+                        text: "d'accord",
+                        onPress: () => console.warn("refusé"),
+                        style: "destructive",
+                    },
+                    {
+                        text: "yes",
+                        onPress: () => console.warn("refusé"),
+                        style: "destructive",
+                    },
+                ],
+                {
+                    cancelable: true, // plateform Android uniquement
+                    onDismiss: () => console.warn("dismissed"),
+                }
+            );
         }
     };
 
