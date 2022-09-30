@@ -20,6 +20,12 @@ export default function App() {
             ...currentMyProduct,
         ]);
     };
+
+    const deleteProduct = (key) => {
+        setMyProducts((currentMyProduct) => {
+            return currentMyProduct.filter((product) => product.key != key);
+        });
+    };
     return (
         // view de l'input créé dans le components Addproduct
         <View style={styles.container}>
@@ -28,7 +34,13 @@ export default function App() {
             {/* view des items validé et affiché  crée dans compoennt Products*/}
             <FlatList
                 data={myProducts}
-                renderItem={({ item }) => <Products name={item.name} />}
+                renderItem={({ item }) => (
+                    <Products
+                        name={item.name}
+                        deleteProduct={deleteProduct}
+                        idString={item.key}
+                    />
+                )}
             />
         </View>
     );

@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
-export const Products = ({ name }) => {
+export const Products = ({ name, deleteProduct, idString }) => {
     return (
         <Pressable
-        onPress={() => console.log("supprimé produit")}
-        style={({pressed}) => [{ backgroundColor: pressed ? "cyan" : "lightblue" }]}
+            onPress={() => deleteProduct(idString)}
+            style={({ pressed }) => [
+                { backgroundColor: pressed ? "cyan" : "lightblue" },
+            ]}
         >
             <View style={styles.items}>
                 <Text style={styles.element}>{name}</Text>
