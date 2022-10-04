@@ -10,6 +10,7 @@ import {
 
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
+import { DismissKeyboard } from "./components/DismissKeyboard";
 
 export default function App() {
     const [myProducts, setMyProducts] = useState([]);
@@ -34,59 +35,61 @@ export default function App() {
     };
     return (
         // view de l'input créé dans le components Addproduct
-        <View style={styles.container}>
-            <Modal
-                visible={showModal}
-                onRequestClose={() => setShowModal(false)} // uniquement sur android pour fermer modal
-                // presentationStyle={"pageSheet"} // sur ios pour fermer modal
-                animationType="slide" // fait l'animation de l'affichage de la modal
-                transparent // rend transparent l'arrière du modal
-            >
-                <View style={styles.modalContainer}>
-                    {/* <Text style={styles.modalClosed}>
+        <DismissKeyboard>
+            <View style={styles.container}>
+                <Modal
+                    visible={showModal}
+                    onRequestClose={() => setShowModal(false)} // uniquement sur android pour fermer modal
+                    // presentationStyle={"pageSheet"} // sur ios pour fermer modal
+                    animationType="slide" // fait l'animation de l'affichage de la modal
+                    transparent // rend transparent l'arrière du modal
+                >
+                    <View style={styles.modalContainer}>
+                        {/* <Text style={styles.modalClosed}>
                         Tirer vers le bas pour fermer ou appuyer sur OK
                     </Text> */}
-                    <View style={styles.modalContent}>
-                        <View style={styles.modalHeader}>
-                            <Text style={styles.modalHeaderText}>
-                                Oups une erreur c'est produite
-                            </Text>
-                        </View>
-                        <View style={styles.modalBody}>
-                            <Text style={styles.modalBodyText}>
-                                Veuillez indiquez un produit
-                            </Text>
-                        </View>
-                        <View style={styles.modalFooter}>
-                            <Pressable
-                                style={styles.pressableBtnModal}
-                                onPressIn={() => setShowModal(false)}
-                            >
-                                <Text style={styles.modalBtn}>OK</Text>
-                            </Pressable>
+                        <View style={styles.modalContent}>
+                            <View style={styles.modalHeader}>
+                                <Text style={styles.modalHeaderText}>
+                                    Oups une erreur c'est produite
+                                </Text>
+                            </View>
+                            <View style={styles.modalBody}>
+                                <Text style={styles.modalBodyText}>
+                                    Veuillez indiquez un produit
+                                </Text>
+                            </View>
+                            <View style={styles.modalFooter}>
+                                <Pressable
+                                    style={styles.pressableBtnModal}
+                                    onPressIn={() => setShowModal(false)}
+                                >
+                                    <Text style={styles.modalBtn}>OK</Text>
+                                </Pressable>
+                            </View>
                         </View>
                     </View>
-                </View>
-            </Modal>
-            <AddProduct submitHandler={submitHandler} />
+                </Modal>
+                <AddProduct submitHandler={submitHandler} />
 
-            {/* view des items validé et affiché  crée dans compoennt Products*/}
-            <FlatList
-                data={myProducts}
-                renderItem={({ item }) => (
-                    <Products
-                        name={item.name}
-                        deleteProduct={deleteProduct}
-                        idString={item.key}
-                    />
-                )}
-            />
-        </View>
+                {/* view des items validé et affiché  crée dans compoennt Products*/}
+                <FlatList
+                    data={myProducts}
+                    renderItem={({ item }) => (
+                        <Products
+                            name={item.name}
+                            deleteProduct={deleteProduct}
+                            idString={item.key}
+                        />
+                    )}
+                />
+            </View>
+        </DismissKeyboard>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 40, paddingTop: 60 },
+    container: { padding: 40, paddingTop: 60,flex:1, },
     modalContainer: {
         flex: 1,
         justifyContent: "center",
