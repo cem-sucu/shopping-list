@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import {
+    StyleSheet,
+    View,
+    TextInput,
+    Button,
+    TouchableOpacity,
+    Text,
+} from "react-native";
 
 export const AddProduct = ({ submitHandler }) => {
     const [product, setProduct] = useState("");
@@ -20,14 +27,24 @@ export const AddProduct = ({ submitHandler }) => {
                 placeholder="Nouveau produit"
                 onChangeText={inputHandler}
                 value={product}
+                // editable={false} permet d'intedire d'écire dans le champs
+                // multiline permet d'écire sur plusieurs lignes
+                // maxLength={9} limiter le  nombre de caractère écrivable
+                // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire
             />
             <Button title="valider" onPress={handleClick} />
+
+            {/*  //TODO pour pouvoir mettre du style sur le button ios  */}
+            {/*  <TouchableOpacity onPress={handleClick} style={styles.bgios}>
+                <Text style={styles.textios}>Valider ios</Text>
+            </TouchableOpacity> */}
+            {/* //TODO fin du button pour styliser sur ios */}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    inputContainer: { flexDirection: "row", marginBottom: 15 },
+    inputContainer: { marginBottom: 15 },
     textInput: {
         borderColor: "grey",
         borderWidth: 1,
@@ -35,5 +52,12 @@ const styles = StyleSheet.create({
         paddingLeft: 9,
         fontSize: 18,
         flexGrow: 1,
+    },
+    bgios: {
+        borderRadius: 5,
+        backgroundColor: "#1e90ff",
+    },
+    textios: {
+        textAlign: "center",
     },
 });

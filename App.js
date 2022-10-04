@@ -7,6 +7,7 @@ import {
     Text,
     Pressable,
 } from "react-native";
+
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
 
