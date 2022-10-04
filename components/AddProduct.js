@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-    StyleSheet,
-    View,
-    TextInput,
-    Button,
-    TouchableOpacity,
-    Text,
-} from "react-native";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 
 export const AddProduct = ({ submitHandler }) => {
     const [product, setProduct] = useState("");
@@ -30,7 +23,7 @@ export const AddProduct = ({ submitHandler }) => {
                 // editable={false} permet d'intedire d'écire dans le champs
                 // multiline permet d'écire sur plusieurs lignes
                 // maxLength={9} limiter le  nombre de caractère écrivable
-                // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire
+                // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
             />
             <Button title="valider" onPress={handleClick} />
 
@@ -53,11 +46,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         flexGrow: 1,
     },
-    bgios: {
+    //TODO le style que j'ai mis pour ios
+    /*  bgios: {
         borderRadius: 5,
         backgroundColor: "#1e90ff",
     },
     textios: {
         textAlign: "center",
-    },
+    }, */
+    //TODO fin du style pour ios
 });

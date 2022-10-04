@@ -15,6 +15,15 @@ import { DismissKeyboard } from "./components/DismissKeyboard";
 export default function App() {
     const [myProducts, setMyProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [refresh, setRefresh] = useState(false);
+
+    const onRefresh = () => {
+        //TODO on peut faire ca sur 2 ligne
+        // setRefresh(true);
+        // setRefresh(false);
+        //TODO ou alors
+        //setRefresh(!true); qui revient a la même chose
+    };
 
     const submitHandler = (product) => {
         if (product.length > 1) {
@@ -74,6 +83,8 @@ export default function App() {
 
                 {/* view des items validé et affiché  crée dans compoennt Products*/}
                 <FlatList
+                    onRefresh={onRefresh}
+                    refreshing={refresh}
                     data={myProducts}
                     renderItem={({ item }) => (
                         <Products
@@ -89,7 +100,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 40, paddingTop: 60,flex:1, },
+    container: { padding: 40, paddingTop: 60, flex: 1 },
     modalContainer: {
         flex: 1,
         justifyContent: "center",
