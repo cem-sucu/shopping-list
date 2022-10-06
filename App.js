@@ -7,6 +7,7 @@ import {
     Text,
     Pressable,
     Button,
+    Image,
 } from "react-native";
 import { StatusBar } from "react-native"; // import pour le status bar
 
@@ -74,6 +75,10 @@ export default function App() {
                                 </Text>
                             </View>
                             <View style={styles.modalBody}>
+                                <Image
+                                    source={require("./assets/red-check-128.png")}
+                                    style={styles.redCheck}
+                                />
                                 <Text style={styles.modalBodyText}>
                                     Veuillez indiquez un produit
                                 </Text>
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
         marginVertical: 230,
         backgroundColor: "white",
         width: "90%",
-        height: 250,
+        height: 300,
         borderRadius: 15,
         alignItems: "center",
         borderWidth: 1, // encadrer la modal d'une ligne
@@ -182,5 +187,9 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         padding: 16,
+    },
+    redCheck: {
+        width: 100,
+        height: 100,
     },
 });
