@@ -6,7 +6,9 @@ import {
     Modal,
     Text,
     Pressable,
+    Button,
 } from "react-native";
+import { StatusBar } from "react-native";
 
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
@@ -16,6 +18,7 @@ export default function App() {
     const [myProducts, setMyProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [refresh, setRefresh] = useState(false);
+    const [displayModal, setDisplayModal] = useState(false);
 
     const onRefresh = () => {
         //TODO on peut faire ca sur 2 ligne
@@ -42,6 +45,7 @@ export default function App() {
             return currentMyProduct.filter((product) => product.key != key);
         });
     };
+    StatusBar.setBarStyle("dark-content", true);
     return (
         // view de l'input créé dans le components Addproduct
         <DismissKeyboard>
@@ -79,9 +83,13 @@ export default function App() {
                         </View>
                     </View>
                 </Modal>
-                <AddProduct submitHandler={submitHandler} />
+                <Button title="valider nouveau" onPress={()=> setDisplayModal(true)} />
+                <AddProduct
+                    submitHandler={submitHandler}
+                    displayModal={displayModal}
+                />
 
-                {/* view des items validé et affiché  crée dans compoennt Products*/}
+                {/*la view des items validé et affiché  crée dans compoennt Products*/}
                 <FlatList
                     onRefresh={onRefresh}
                     refreshing={refresh}
