@@ -29,6 +29,8 @@ export default function App() {
     };
 
     const submitHandler = (product) => {
+
+        setDisplayModal(false)
         if (product.length > 1) {
             const idString = Date.now().toString();
             setMyProducts((currentMyProduct) => [
@@ -83,7 +85,10 @@ export default function App() {
                         </View>
                     </View>
                 </Modal>
-                <Button title="valider nouveau" onPress={()=> setDisplayModal(true)} />
+                <Button
+                    title="valider nouveau"
+                    onPress={() => setDisplayModal(true)}
+                />
                 <AddProduct
                     submitHandler={submitHandler}
                     displayModal={displayModal}
