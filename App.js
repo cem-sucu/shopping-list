@@ -8,6 +8,7 @@ import {
     Pressable,
     Button,
     Image,
+    ImageBackground,
 } from "react-native";
 import { StatusBar } from "react-native"; // import pour le status bar
 
@@ -16,7 +17,7 @@ import { AddProduct } from "./components/AddProduct";
 import { DismissKeyboard } from "./components/DismissKeyboard";
 
 export default function App() {
-    StatusBar.setBarStyle("dark-content", true); // pour avoir le statusbar en noir sur fond blanc
+    StatusBar.setBarStyle("light-content", true); // pour avoir le statusbar en noir sur fond blanc
 
     const [myProducts, setMyProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -41,6 +42,7 @@ export default function App() {
             ]);
         } else {
             setShowModal(true);
+            StatusBar.setBarStyle("dark-content", true);
         }
     };
 
@@ -56,7 +58,12 @@ export default function App() {
     return (
         // view de l'input créé dans le components Addproduct
         <DismissKeyboard>
-            <View style={styles.container}>
+            <ImageBackground
+                style={styles.container}
+                source={{
+                    uri: "https://cdn.pixabay.com/photo/2016/03/15/02/42/floor-1256804_960_720.jpg",
+                }}
+            >
                 <Modal
                     visible={showModal}
                     onRequestClose={() => setShowModal(false)} // uniquement sur android pour fermer modal
@@ -94,10 +101,11 @@ export default function App() {
                         </View>
                     </View>
                 </Modal>
-                <Button
-                    title="ajouter nouveau produit"
-                    onPress={() => setDisplayModal(true)}
-                />
+                    <Button
+                        title="ajouter nouveau produit"
+                        onPress={() => setDisplayModal(true)}
+                        color="#fff"
+                    />
                 <AddProduct
                     submitHandler={submitHandler}
                     displayModal={displayModal}
@@ -117,7 +125,7 @@ export default function App() {
                         />
                     )}
                 />
-            </View>
+            </ImageBackground>
         </DismissKeyboard>
     );
 }
