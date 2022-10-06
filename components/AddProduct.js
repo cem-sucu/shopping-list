@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
 
-export const AddProduct = ({ submitHandler, displayModal }) => {
+export const AddProduct = ({
+    submitHandler,
+    displayModal,
+    cancelNewProduct,
+}) => {
     const [product, setProduct] = useState("");
 
     const inputHandler = (val) => {
@@ -27,6 +31,11 @@ export const AddProduct = ({ submitHandler, displayModal }) => {
                     // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
                 />
                 <Button title="valider" onPress={handleClick} />
+                <Button
+                    title="annuler"
+                    onPress={cancelNewProduct}
+                    color="red"
+                />
 
                 {/*  //TODO pour pouvoir mettre du style sur le button ios  */}
                 {/*  <TouchableOpacity onPress={handleClick} style={styles.bgios}>
@@ -42,7 +51,7 @@ const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
         justifyContent: "center",
-        padding:24,
+        padding: 24,
     },
     textInput: {
         borderColor: "grey",

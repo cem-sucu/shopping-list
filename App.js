@@ -8,13 +8,15 @@ import {
     Pressable,
     Button,
 } from "react-native";
-import { StatusBar } from "react-native";
+import { StatusBar } from "react-native"; // import pour le status bar
 
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
 import { DismissKeyboard } from "./components/DismissKeyboard";
 
 export default function App() {
+    StatusBar.setBarStyle("dark-content", true); // pour avoir le statusbar en noir sur fond blanc
+
     const [myProducts, setMyProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [refresh, setRefresh] = useState(false);
@@ -29,8 +31,7 @@ export default function App() {
     };
 
     const submitHandler = (product) => {
-
-        setDisplayModal(false)
+        setDisplayModal(false);
         if (product.length > 1) {
             const idString = Date.now().toString();
             setMyProducts((currentMyProduct) => [
@@ -47,7 +48,10 @@ export default function App() {
             return currentMyProduct.filter((product) => product.key != key);
         });
     };
-    StatusBar.setBarStyle("dark-content", true);
+
+    const cancelNewProduct = () => {
+        setDisplayModal(false);
+    };
     return (
         // view de l'input créé dans le components Addproduct
         <DismissKeyboard>
@@ -86,12 +90,13 @@ export default function App() {
                     </View>
                 </Modal>
                 <Button
-                    title="valider nouveau"
+                    title="ajouter nouveau produit"
                     onPress={() => setDisplayModal(true)}
                 />
                 <AddProduct
                     submitHandler={submitHandler}
                     displayModal={displayModal}
+                    cancelNewProduct={cancelNewProduct}
                 />
 
                 {/*la view des items validé et affiché  crée dans compoennt Products*/}
