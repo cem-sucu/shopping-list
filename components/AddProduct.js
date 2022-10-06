@@ -30,12 +30,18 @@ export const AddProduct = ({
                     // maxLength={9} limiter le  nombre de caractère écrivable
                     // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
                 />
-                <Button title="valider" onPress={handleClick} />
-                <Button
-                    title="annuler"
-                    onPress={cancelNewProduct}
-                    color="red"
-                />
+                <View style={styles.btnContainer}>
+                    <View style={styles.btnBlue}>
+                        <Button title="valider" onPress={handleClick} />
+                    </View>
+                    <View style={styles.btnTomato}>
+                        <Button
+                            title="annuler"
+                            onPress={cancelNewProduct}
+                            color="#ff6347"
+                        />
+                    </View>
+                </View>
 
                 {/*  //TODO pour pouvoir mettre du style sur le button ios  */}
                 {/*  <TouchableOpacity onPress={handleClick} style={styles.bgios}>
@@ -60,6 +66,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 9,
         fontSize: 18,
+        marginBottom:9,
     },
     //TODO le style que j'ai mis pour ios pour un button sur ios
     /*  bgios: {
@@ -70,4 +77,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
     }, */
     //TODO fin du style pour ios
+    btnContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    btnBlue: {
+        width: "45%",
+    },
+    btnTomato: {
+        width: "45%",
+    },
 });
