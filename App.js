@@ -17,6 +17,8 @@ import { AddProduct } from "./components/AddProduct";
 import { DismissKeyboard } from "./components/DismissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
 import Header from "./components/Header";
+import Colors from "./constants/colors";
+import colors from "./constants/colors";
 
 export default function App() {
     StatusBar.setBarStyle("light-content", true); // pour avoir le statusbar en noir sur fond blanc
@@ -125,8 +127,8 @@ export default function App() {
                         refreshControl={
                             <RefreshControl
                                 title="rafraîchissement"
-                                tintColor="#ffffff"
-                                titleColor="#ffffff"
+                                tintColor={Colors.white}
+                                titleColor={Colors.white}
                             />
                         }
                         //TODO fin du snippet change color refresh
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     // },
     modalContent: {
         marginVertical: 230,
-        backgroundColor: "#ffffff",
+        backgroundColor: Colors.white,
         width: "90%",
         height: 300,
         borderRadius: 15,
@@ -178,10 +180,10 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderBottomWidth: 1,
-        borderBottomColor: "#d3d3d3",
+        borderBottomColor: Colors.secondary,
     },
     modalHeaderText: {
-        color: "#ff0000",
+        color: colors.product,
         fontSize: 17,
         fontWeight: "bold",
     },
@@ -194,14 +196,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     modalBodyText: {
-        color: "#ff0000",
+        color: Colors.product,
         fontSize: 14,
     },
     modalFooter: {
         width: "100%",
     },
     pressableBtnModal: {
-        backgroundColor: "#000000",
+        backgroundColor: colors.dark,
         justifyContent: "center",
         alignItems: "center",
         borderBottomLeftRadius: 14, // arrondie les angles du modal
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
     },
     modalBtn: {
         fontSize: 17,
-        color: "#ffffff",
+        color: colors.white,
         fontWeight: "bold",
         padding: 16,
     },
@@ -218,11 +220,11 @@ const styles = StyleSheet.create({
         height: 100,
     },
     addProductBtn: {
-        backgroundColor: "#8b0000",
+        backgroundColor: Colors.danger,
         padding: 20,
         borderRadius: 30,
         borderWidth: 3,
-        borderColor: "#f5f5dc",
+        borderColor: Colors.info,
         marginBottom: 10,
     },
     bgImage: {

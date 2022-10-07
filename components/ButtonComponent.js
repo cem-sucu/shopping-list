@@ -2,6 +2,7 @@
 
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+import colors from "../constants/colors";
 
 const ButtonComponent = ({ onPressHandler, style, children }) => {
     return (
@@ -15,11 +16,11 @@ const ButtonComponent = ({ onPressHandler, style, children }) => {
 
 const styles = StyleSheet.create({
     btn: {
-        backgroundColor: "#808080",
+        backgroundColor: colors.bg,
         padding: 9,
     },
     btnText: {
-        color: "#ffffff",
+        color: colors.white,
         textAlign: "center",
         fontSize: 17,
     },

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Modal } from "react-native";
 import ButtonComponent from "./ButtonComponent";
 import { StatusBar } from "react-native";
+import colors from "../constants/colors";
 
 export const AddProduct = ({
     submitHandler,
@@ -25,8 +26,8 @@ export const AddProduct = ({
             {/* permet de changer le status bar en focntion de la couleur de fond */}
             <StatusBar
                 animated={true}
-                color="#ffffff" // marche sur android, détange pa sur ios
-                backgroundColor="#000000" // marhce sur android / pas sur ios
+                color={colors.white} // marche sur android, détange pa sur ios
+                backgroundColor={colors.dark} // marhce sur android / pas sur ios
                 barStyle={"dark-content"} // marche sur ios /pas sur android
                 showHideTransition={"fade"}
             />
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     //TODO le style que j'ai mis pour ios pour un button sur ios
     /*  bgios: {
         borderRadius: 5,
-        backgroundColor: "#1e90ff",
+        backgroundColor: Colors.blue,
     },
     textios: {
         textAlign: "center",
@@ -99,12 +100,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     btnBlue: {
-        backgroundColor: "#8fbc8f",
+        backgroundColor: colors.success,
         width: 150,
         borderRadius: 6,
     },
     btnTomato: {
-        backgroundColor: "#ff6347",
+        backgroundColor: colors.warning,
         width: 150,
         borderRadius: 6,
     },
