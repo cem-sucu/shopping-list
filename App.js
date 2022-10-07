@@ -42,7 +42,6 @@ export default function App() {
             ]);
         } else {
             setShowModal(true);
-            StatusBar.setBarStyle("dark-content", true);
         }
     };
 
@@ -101,11 +100,11 @@ export default function App() {
                         </View>
                     </View>
                 </Modal>
-                    <Button
-                        title="ajouter nouveau produit"
-                        onPress={() => setDisplayModal(true)}
-                        color="#fff"
-                    />
+                <Button
+                    title="ajouter nouveau produit"
+                    onPress={() => setDisplayModal(true)}
+                    color="#0ff"
+                />
                 <AddProduct
                     submitHandler={submitHandler}
                     displayModal={displayModal}

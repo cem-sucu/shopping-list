@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
+import ButtonComponent from "./ButtonComponent";
+import { StatusBar } from "react-native";
 
 export const AddProduct = ({
     submitHandler,
@@ -10,6 +12,7 @@ export const AddProduct = ({
 
     const inputHandler = (val) => {
         setProduct(val);
+        StatusBar.setBarStyle("dark-content", true);
     };
 
     const handleClick = () => {
@@ -19,6 +22,15 @@ export const AddProduct = ({
 
     return (
         <Modal visible={displayModal} animationType="slide">
+            {/* permet de changer le status bar en focntion de la couleur de fond */}
+            <StatusBar
+                animated={true}
+                color="#ffffff" // marche sur android, détange pa sur ios
+                backgroundColor="#000000" // marhce sur android / pas sur ios
+                barStyle={"dark-content"} // marche sur ios /pas sur android
+                showHideTransition={"fade"}
+            />
+            {/* fin status bar */}
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.textInput}
@@ -31,16 +43,16 @@ export const AddProduct = ({
                     // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
                 />
                 <View style={styles.btnContainer}>
-                    <View style={styles.btnBlue}>
-                        <Button title="valider" onPress={handleClick} />
-                    </View>
-                    <View style={styles.btnTomato}>
-                        <Button
-                            title="annuler"
-                            onPress={cancelNewProduct}
-                            color="#ff6347"
-                        />
-                    </View>
+                    <ButtonComponent
+                        btnTitle="Valider"
+                        onPressHandler={handleClick}
+                        style={styles.btnBlue}
+                    />
+                    <ButtonComponent
+                        btnTitle="Annuler"
+                        onPressHandler={cancelNewProduct}
+                        style={styles.btnTomato}
+                    />
                 </View>
 
                 {/*  //TODO pour pouvoir mettre du style sur le button ios  */}
@@ -58,6 +70,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         padding: 24,
+        setBarStyle: "dark-content",
     },
     textInput: {
         borderColor: "grey",
@@ -66,7 +79,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 9,
         fontSize: 18,
-        marginBottom:9,
+        marginBottom: 9,
     },
     //TODO le style que j'ai mis pour ios pour un button sur ios
     /*  bgios: {
@@ -82,9 +95,13 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     btnBlue: {
-        width: "45%",
+        backgroundColor: "#8fbc8f",
+        width: 150,
+        borderRadius: 6,
     },
     btnTomato: {
-        width: "45%",
+        backgroundColor: "#ff6347",
+        width: 150,
+        borderRadius: 6,
     },
 });
