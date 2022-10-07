@@ -6,15 +6,15 @@ import {
     Modal,
     Text,
     Pressable,
-    Button,
     Image,
     ImageBackground,
 } from "react-native";
-import { StatusBar } from "react-native"; // import pour le status bar
 
+import { StatusBar } from "react-native"; // import pour le status bar
 import { Products } from "./components/Products";
 import { AddProduct } from "./components/AddProduct";
 import { DismissKeyboard } from "./components/DismissKeyboard";
+import ButtonComponent from "./components/ButtonComponent";
 
 export default function App() {
     StatusBar.setBarStyle("light-content", true); // pour avoir le statusbar en noir sur fond blanc
@@ -100,11 +100,10 @@ export default function App() {
                         </View>
                     </View>
                 </Modal>
-                <Button
-                    title="ajouter nouveau produit"
-                    onPress={() => setDisplayModal(true)}
-                    color="#0ff"
-                />
+                <ButtonComponent onPressHandler={() => setDisplayModal(true)} style={styles.addProductBtn}>
+                    Ajouter nouveau produit
+                </ButtonComponent>
+
                 <AddProduct
                     submitHandler={submitHandler}
                     displayModal={displayModal}
@@ -198,5 +197,13 @@ const styles = StyleSheet.create({
     redCheck: {
         width: 100,
         height: 100,
+    },
+    addProductBtn:{
+        backgroundColor: "#8b0000",
+        padding: 20,
+        borderRadius: 30,
+        // borderWidth:3,
+        // borderColor: "#f5f5dc",
+
     },
 });

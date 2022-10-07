@@ -37,22 +37,26 @@ export const AddProduct = ({
                     placeholder="Nouveau produit"
                     onChangeText={inputHandler}
                     value={product}
-                    // editable={false} permet d'intedire d'écire dans le champs
+                    // editable={false} permet d'interdire d'écire dans le champs
                     // multiline permet d'écire sur plusieurs lignes
-                    // maxLength={9} limiter le  nombre de caractère écrivable
+                    // maxLength={9} limiter le  nombre de caractère écrivable a 9 exemple
                     // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
                 />
                 <View style={styles.btnContainer}>
                     <ButtonComponent
-                        btnTitle="Valider"
+                        // btnTitle="Valider" comme on a fait le destructuring au composant ButtonComponent on a pas besoin de faire btnTitle pour ecrire un mots sur le button on peut l'écire come dhab entre les <button>ICI</button>
                         onPressHandler={handleClick}
                         style={styles.btnBlue}
-                    />
+                    >
+                        Valider
+                    </ButtonComponent>
                     <ButtonComponent
-                        btnTitle="Annuler"
+                        // btnTitle="Annuler"
                         onPressHandler={cancelNewProduct}
                         style={styles.btnTomato}
-                    />
+                    >
+                        Annuler
+                    </ButtonComponent>
                 </View>
 
                 {/*  //TODO pour pouvoir mettre du style sur le button ios  */}
