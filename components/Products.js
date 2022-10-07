@@ -6,7 +6,10 @@ export const Products = ({ name, deleteProduct, idString }) => {
         <Pressable
             onPress={() => deleteProduct(idString)}
             style={({ pressed }) => [
-                { backgroundColor: pressed ? "#00ffff" : "#add8e6", borderRadius:10, },
+                {
+                    backgroundColor: pressed ? "#f08080" : "transparent",
+                    borderRadius: 10,
+                },
             ]}
         >
             <View style={styles.items}>
@@ -17,12 +20,16 @@ export const Products = ({ name, deleteProduct, idString }) => {
 };
 
 const styles = StyleSheet.create({
-    items: { marginTop: 1, marginBottom: 1, },
+    items: { marginTop: 1, marginBottom: 1 },
     element: {
-        backgroundColor: "#87cefa",
+        backgroundColor: "#b22222",
+        overflow: "hidden",
+        borderRadius: 21,
         color: "#ffffff",
         padding: 20,
         fontSize: 17,
         marginVertical: 6,
+        marginBottom: 5,
+        textAlign: "center",
     },
 });
