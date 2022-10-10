@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
     StyleSheet,
     View,
@@ -11,7 +11,8 @@ import {
     RefreshControl,
 } from "react-native";
 import * as Font from "expo-font";
-import AppLoading from "expo-app-loading";
+// import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -28,6 +29,8 @@ import Header from "./components/Header";
 import Colors from "./constants/colors";
 import colors from "./constants/colors";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
     StatusBar.setBarStyle("light-content", true); // pour avoir le statusbar en noir sur fond blanc
 
@@ -35,16 +38,44 @@ export default function App() {
     const [showModal, setShowModal] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [displayModal, setDisplayModal] = useState(false);
-    const [fontsLoaded, setFontsLoaded] = useState(false);
+    // const [fontsLoaded, setFontsLoaded] = useState(false);
+    const [appIsReady, setAppIsReady] = useState(false);
 
-    if (!fontsLoaded) {
-        return (
-            <AppLoading
-                startAsync={fetchFonts}
-                onFinish={() => setFontsLoaded(true)}
-                onError={(error) => console.error(error)}
-            />
-        );
+    // if (!fontsLoaded) {
+    //     return (
+    //         <AppLoading
+    //             startAsync={fetchFonts}
+    //             onFinish={() => setFontsLoaded(true)}
+    //             onError={(error) => console.error(error)}
+    //         />
+    //     );
+    // }
+
+    useEffect(() => {
+        async function prepare() {
+            try {
+                await Font.loadAsync({
+                    peralta: require("./assets/fonts/Peralta-Regular.ttf"),
+                });
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+            } catch (e) {
+                console.warn(e);
+            } finally {
+                setAppIsReady(true);
+            }
+        }
+
+        prepare();
+    }, []);
+
+    const onLayoutRootView = useCallback(async () => {
+        if (appIsReady) {
+            await SplashScreen.hideAsync();
+        }
+    }, [appIsReady]);
+
+    if (!appIsReady) {
+        return null;
     }
 
     const onRefresh = () => {
@@ -88,7 +119,7 @@ export default function App() {
                 }}
             >
                 <Header />
-                <View style={styles.container}>
+                <View style={styles.container} onLayout={onLayoutRootView}>
                     <Modal
                         visible={showModal}
                         onRequestClose={() => setShowModal(false)} // uniquement sur android pour fermer modal
