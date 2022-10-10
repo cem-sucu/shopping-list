@@ -13,8 +13,9 @@ export const AddProduct = ({
     const [product, setProduct] = useState("");
 
     const inputHandler = (val) => {
-        setProduct(val);
-        StatusBar.setBarStyle("dark-content", true);
+        // const regex = /[^a-z]/gi; pour refuser tout ce qui est en dehors de 0 à 9
+        const regex = /[^a-z]/gi;  // expression régulière REGEX pour refuser tout ce qui est en dehors de A à Z
+        setProduct(val.replace(regex, ""));
     };
 
     const handleClick = () => {
@@ -27,7 +28,7 @@ export const AddProduct = ({
             {/* permet de changer le status bar en focntion de la couleur de fond */}
             <StatusBar
                 animated={true}
-                color={colors.white} // marche sur android, détange pa sur ios
+                color={colors.white} // marche sur android, dérange pas sur ios
                 backgroundColor={colors.dark} // marhce sur android / pas sur ios
                 barStyle={"dark-content"} // marche sur ios /pas sur android
                 showHideTransition={"fade"}
