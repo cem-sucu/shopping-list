@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import Colors from "../constants/colors";
+import TitleText from "./TitleText";
 
 const Header = () => {
     return (
         <View style={styles.headerWrapper}>
-            <Text style={styles.logo}>Ma liste de course</Text>
+            <TitleText style={styles.logo}>Ma liste de course</TitleText>
         </View>
     );
 };
