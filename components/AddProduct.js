@@ -39,6 +39,7 @@ export const AddProduct = ({
                     textPlaceholder="Nouveau produit"
                     onChangeHandler={inputHandler}
                     inputValue={product}
+                    maxLength={10}
                 />
                 <View style={styles.btnContainer}>
                     <ButtonComponent

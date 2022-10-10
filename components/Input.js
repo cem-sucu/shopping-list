@@ -7,6 +7,7 @@ import colors from "../constants/colors";
 const Input = (props) => {
     return (
         <TextInput
+            {...props}
             style={{ ...styles.input, ...props.style }}
             placeholder={props.textPlaceholder}
             onChangeText={props.onChangeHandler}
@@ -14,7 +15,6 @@ const Input = (props) => {
         />
     );
 };
-
 
 const styles = StyleSheet.create({
     input: {
