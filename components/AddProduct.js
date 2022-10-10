@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Modal } from "react-native";
+import { StyleSheet, View, Modal } from "react-native";
 import ButtonComponent from "./ButtonComponent";
 import { StatusBar } from "react-native";
 import colors from "../constants/colors";
+import Input from "./Input";
 
 export const AddProduct = ({
     submitHandler,
@@ -33,15 +34,11 @@ export const AddProduct = ({
             />
             {/* fin status bar */}
             <View style={styles.inputContainer}>
-                <TextInput
+                <Input
                     style={styles.textInput}
-                    placeholder="Nouveau produit"
-                    onChangeText={inputHandler}
-                    value={product}
-                    // editable={false} permet d'interdire d'écire dans le champs
-                    // multiline permet d'écire sur plusieurs lignes
-                    // maxLength={9} limiter le  nombre de caractère écrivable a 9 exemple
-                    // secureTextEntry pour écrire les mots de passe, transforme le caractère en point noire c'est a dire cachée
+                    textPlaceholder="Nouveau produit"
+                    onChangeHandler={inputHandler}
+                    inputValue={product}
                 />
                 <View style={styles.btnContainer}>
                     <ButtonComponent
@@ -74,17 +71,18 @@ const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
         justifyContent: "center",
-        padding: 24,
+        padding: 20,
         setBarStyle: "dark-content",
     },
     textInput: {
-        borderColor: "grey",
-        borderWidth: 1,
-        marginTop: 45,
+        borderRadius: 30,
+        marginTop: 30,
         padding: 10,
         paddingLeft: 9,
         fontSize: 18,
         marginBottom: 9,
+        textAlign: "center",
+        height: 50,
     },
     //TODO le style que j'ai mis pour ios pour un button sur ios
     /*  bgios: {
