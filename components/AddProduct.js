@@ -14,7 +14,7 @@ export const AddProduct = ({
 
     const inputHandler = (val) => {
         // const regex = /[^a-z]/gi; pour refuser tout ce qui est en dehors de 0 à 9
-        const regex = /[^a-z]/gi;  // expression régulière REGEX pour refuser tout ce qui est en dehors de A à Z
+        const regex = /[^a-z]/gi; // expression régulière REGEX pour refuser tout ce qui est en dehors de A à Z
         setProduct(val.replace(regex, ""));
     };
 

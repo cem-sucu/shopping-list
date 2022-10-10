@@ -10,6 +10,14 @@ import {
     ImageBackground,
     RefreshControl,
 } from "react-native";
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
+
+const fetchFonts = () => {
+    return Font.loadAsync({
+        peralta: require("./assets/fonts/Peralta-Regular.ttf"),
+    });
+};
 
 import { StatusBar } from "react-native"; // import pour le status bar
 import { Products } from "./components/Products";
@@ -27,6 +35,17 @@ export default function App() {
     const [showModal, setShowModal] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [displayModal, setDisplayModal] = useState(false);
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+
+    if (!fontsLoaded) {
+        return (
+            <AppLoading
+                startAsync={fetchFonts}
+                onFinish={() => setFontsLoaded(true)}
+                onError={(error) => console.error(error)}
+            />
+        );
+    }
 
     const onRefresh = () => {
         //TODO on peut faire ca sur 2 ligne
