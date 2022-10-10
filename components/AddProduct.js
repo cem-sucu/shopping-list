@@ -4,6 +4,8 @@ import ButtonComponent from "./ButtonComponent";
 import { StatusBar } from "react-native";
 import colors from "../constants/colors";
 import Input from "./Input";
+import BodyText from "./BodyText";
+import AppStyles from "../constants/AppStyles";
 
 export const AddProduct = ({
     submitHandler,
@@ -35,6 +37,7 @@ export const AddProduct = ({
             />
             {/* fin status bar */}
             <View style={styles.inputContainer}>
+                <BodyText style={AppStyles.textBody}>Veuillez indiquer un produit</BodyText>
                 <Input
                     style={styles.textInput}
                     textPlaceholder="Nouveau produit"

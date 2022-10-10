@@ -11,7 +11,6 @@ import {
     RefreshControl,
 } from "react-native";
 import * as Font from "expo-font";
-// import AppLoading from "expo-app-loading";
 import * as SplashScreen from "expo-splash-screen";
 
 const fetchFonts = () => {
@@ -40,16 +39,6 @@ export default function App() {
     const [displayModal, setDisplayModal] = useState(false);
     // const [fontsLoaded, setFontsLoaded] = useState(false);
     const [appIsReady, setAppIsReady] = useState(false);
-
-    // if (!fontsLoaded) {
-    //     return (
-    //         <AppLoading
-    //             startAsync={fetchFonts}
-    //             onFinish={() => setFontsLoaded(true)}
-    //             onError={(error) => console.error(error)}
-    //         />
-    //     );
-    // }
 
     useEffect(() => {
         async function prepare() {
@@ -270,7 +259,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     addProductBtn: {
-        backgroundColor: Colors.danger,
+        backgroundColor: Colors.success,
         padding: 20,
         borderRadius: 30,
         borderWidth: 3,

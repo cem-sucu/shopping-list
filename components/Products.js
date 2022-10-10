@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import colors from "../constants/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const Products = ({ name, deleteProduct, idString }) => {
     return (
@@ -15,6 +16,11 @@ export const Products = ({ name, deleteProduct, idString }) => {
         >
             <View style={styles.items}>
                 <Text style={styles.element}>{name}</Text>
+                <MaterialCommunityIcons
+                    name="delete-forever"
+                    size={29}
+                    color={colors.gold}
+                />
             </View>
         </Pressable>
     );
@@ -22,19 +28,20 @@ export const Products = ({ name, deleteProduct, idString }) => {
 
 const styles = StyleSheet.create({
     items: {
-        marginTop: 1,
-        marginBottom: 1,
+        marginTop: 10,
+        marginBottom: 10,
         backgroundColor: colors.bgproduct,
         borderRadius: 21,
+        flexDirection: "row",
+        padding: 15,
+        alignItems: "center",
+        justifyContent: "space-between",
     },
     element: {
-        overflow: "hidden",
-
         color: colors.white,
-        padding: 20,
         fontSize: 17,
-        marginVertical: 6,
-        marginBottom: 5,
-        textAlign: "center",
+        marginLeft: 20,
+        marginBottom: 10,
+        margin: 10,
     },
 });

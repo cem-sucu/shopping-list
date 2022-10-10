@@ -11,4 +11,5 @@ export default {
     blue:"blue",
     bg: "#808080",
     bgproduct: "#b22222",
+    gold: "#ffd700",
 };
